@@ -13,7 +13,7 @@
       ♥<%= @post_image.favorites.count %> いいね
       <% end %>
     </p>
-    <% else %>
+  <% else %>
     <p>
       <%= link_to post_image_favorites_path(@post_image), method: :post do %>
       ♡<%= @post_image.favorites.count %> いいね
@@ -25,7 +25,7 @@
 <div class="comments">
   <p>コメント件数:<%= @post_image.post_comments.count %></p>
   <% @post_image.post_comments.each do |post_comment| %>
-    <p><%= image_tag('142_refileDownloadImage.png') %></p>
+    <p><%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
     <%= post_comment.user.name %>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %>
     <% if post_comment.user == current_user %>
